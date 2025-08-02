@@ -20,7 +20,7 @@ services:
     image: mysql:8.0
     restart: always
     ports:
-      - "9165:3306"
+      - "9166:3306"
     environment:
       MYSQL_HOST: localhost
       MYSQL_ROOT_PASSWORD: root
