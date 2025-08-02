@@ -111,7 +111,7 @@
     };
 
     async function cargarLeads(pagina = 1) {
-      const res = await fetch(`http://localhost:3001/api/leads?page=${pagina}`, {
+      const res = await fetch(`http://tavo.efdiaz.xyz:3129/leads?page=${pagina}`, {
         headers: { 'Authorization': 'Bearer ' + token }
       });
 
@@ -154,7 +154,7 @@
           const nuevoEstado = e.target.value;
           const id = e.target.getAttribute('data-id');
 
-          const resp = await fetch(`http://localhost:3001/api/leads/${id}/estado`, {
+          const resp = await fetch(`http://tavo.efdiaz.xyz:3129/leads/${id}/estado`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -188,7 +188,7 @@
           });
 
           if (result.isConfirmed) {
-            const res = await fetch(`http://localhost:3001/api/leads/${id}`, {
+            const res = await fetch(`http://tavo.efdiaz.xyz:3129/leads/${id}`, {
               method: 'DELETE',
               headers: { 'Authorization': 'Bearer ' + token }
             });

@@ -1,37 +1,35 @@
-version: '3.8'
-
 services:
   api:
     build: ./api
     ports:
-      - "4000:4000"
+      - "3138:3001"
     env_file: .env
     depends_on:
       - db
     networks:
-      - tot-network
+      - app-network
 
   landing:
     build: ./landing
     ports:
-      - "3000:80"
+      - "3129:80"
     networks:
-      - tot-network
+      - app-network
 
   db:
     image: mysql:8.0
     restart: always
     ports:
-      - "3306:3306"
+      - "9165:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: localhost
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: formulario_db
     volumes:
+      - ./db/Dump20250801.sql:/docker-entrypoint-initdb.d/init.sql
       - dbdata:/var/lib/mysql
     networks:
-      - tot-network
+      - app-network
 
 volumes:
   dbdata:
