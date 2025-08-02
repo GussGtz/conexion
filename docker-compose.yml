@@ -12,7 +12,7 @@ services:
   landing:
     build: ./landing
     ports:
-      - "3129:80"
+      - "3107:80"
     networks:
       - app-network
 
