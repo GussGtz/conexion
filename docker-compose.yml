@@ -2,7 +2,7 @@ services:
   api:
     build: ./api
     ports:
-      - "3138:3001"
+      - "3108:3001"
     env_file: .env
     depends_on:
       - db
